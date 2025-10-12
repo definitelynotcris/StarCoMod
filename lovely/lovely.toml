@@ -1,0 +1,31 @@
+[manifest]
+version = "1.0.0"
+dump_lua = true
+priority = -1
+
+[[patches]]
+[patches.pattern]
+target = 'back.lua'
+pattern = '''if self.name == 'Plasma Deck' and args.context == 'final_scoring_step' then'''
+position = 'before'
+payload = '''
+
+if ((G.GAME.blind and (G.GAME.blind.name == 'Dragon of Dojima'))) and not (G.GAME.blind.disabled) and (args.context == 'final_scoring_step') then
+    print("test2")
+    local upper = math.floor(args.chips*args.mult)
+    local base = G.GAME.chips
+    local overshoot = math.floor((((base + upper)/G.GAME.blind.chips) - 1) * 20)
+    if (to_big and (to_big(overshoot) > to_big(0))) or ((not to_big and (overshoot > 0))) then
+        G.E_MANAGER:add_event(Event({
+            func = (function()
+                G.GAME.blind.chips = G.GAME.blind.chips * (1 + (0.08 * overshoot))
+                G.GAME.blind.chip_text = number_format(G.GAME.blind.chips)
+                G.GAME.blind:set_text()
+                G.GAME.blind:wiggle()
+                delay(0.4)
+                return true
+            end)
+        }))
+    end
+end'''
+match_indent = true

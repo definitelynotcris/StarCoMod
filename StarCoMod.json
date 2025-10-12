@@ -1,0 +1,14 @@
+{
+    "id": "StarCoMod",
+    "name": "StarCoMod",
+    "display_name": "StarCoMod",
+    "author": [ "definitely not cris" ],
+    "description": "gamign",
+    "prefix": "star",
+    "main_file": "main.lua",
+    "priority": 0,
+    "badge_colour": "c804dc",
+    "badge_text_colour": "FFFFFF",
+    "version": "1.0",
+    "dependencies": []
+}
