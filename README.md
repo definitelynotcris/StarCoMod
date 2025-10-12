@@ -8,5 +8,4 @@ le funny balatro mod
 
 -1 new Spectral Card
 
-
-help
+this is probably balanced, no promises
