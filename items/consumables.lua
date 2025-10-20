@@ -29,7 +29,7 @@ SMODS.Consumable({
     unlocked = true,
     cost = 4,
     hidden = true,
-
+    
     use = function(self, card, area, copier)
         for i = 1, #G.jokers.cards do
             G.jokers.cards[i].ability.eternal = false

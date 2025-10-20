@@ -20,6 +20,16 @@ StarCoMod_config = SMODS.current_mod.config
 
 G.effectmanager = {}
 
+-- StarCoMod joker pool
+SMODS.ObjectType({
+	key = "starcomodjoker",
+	default = "j_reserved_parking",
+	cards = {},
+	inject = function(self)
+		SMODS.ObjectType.inject(self)
+	end,
+})
+
 -- Starscape joker pool
 SMODS.ObjectType({
 	key = "starscape",

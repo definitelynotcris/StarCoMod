@@ -46,7 +46,7 @@ SMODS.Blind {
         name = 'Warp Disruptor',
         text = {
             'Debuffs all',
-            '{C:attention}starscape{} ships',
+            '{C:attention}StarCoMod{} jokers',
         }
     },
     boss = {  min = 1 },
@@ -54,7 +54,7 @@ SMODS.Blind {
 
     recalc_debuff = function(self, card)
         for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i].config.center.pools and G.jokers.cards[i].config.center.pools.starscape then
+            if G.jokers.cards[i].config.center.pools and G.jokers.cards[i].config.center.pools.starcomodjoker then
                 G.jokers.cards[i]:set_debuff(true)
             end
         end
@@ -420,9 +420,6 @@ SMODS.Blind {
     boss = {  min = 0 },
     boss_colour = HEX('808080'),
     mult = 2,
-    set_blind = function(self, reset, silent)
-        love.audio.stop()
-    end,
 
     calculate = function(self,card,context)
         if context.final_scoring_step then
@@ -487,21 +484,22 @@ function sliceTheEverLovingShitOutOfYourHand()
         for i = 1, #G.hand.cards do
             local card = G.hand.cards[i]
             --print("sotrue2")
-            redrawcount = redrawcount + 1
+            
             G.E_MANAGER:add_event(Event {
                   trigger = "before",
                   delay = G.SETTINGS.GAMESPEED*0.03, 
                   func = function()
                         card:start_dissolve()
-                        card = nil
+                        card:remove()
                     return true
                   end,
             })
+            redrawcount = redrawcount + 1
         end
         G.E_MANAGER:add_event(Event {
               
               func = function()
-                    SMODS.draw_cards(1)
+                    SMODS.draw_cards(redrawcount)
                 return true
               end,
             })

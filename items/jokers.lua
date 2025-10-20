@@ -298,7 +298,7 @@ SMODS.Joker{
 
     atlas = 'bolt',
     pos = {x = 0, y = 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
@@ -353,7 +353,7 @@ SMODS.Joker{
     blueprint_compat = true,
     eternal_compat = true,
     perishable_compat = true,
-
+    pools = { ["starcomodjoker"] = true },
     loc_vars = function(self, info_queue, center)
 		return { vars = { center.ability.extra.mult, center.ability.extra.chips }  }
 	end,
@@ -413,7 +413,7 @@ SMODS.Joker{
             
     atlas = 'ZolarKeth',
     pos = {x = 0, y = 0},
-
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
     cost = 8,
     rarity = 3,
     blueprint_compat = true,
@@ -477,7 +477,7 @@ SMODS.Joker{
 
     atlas = 'togif',
     pos = {x = 0, y = 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 20,
     rarity = 4,
     blueprint_compat = true,
@@ -580,7 +580,7 @@ SMODS.Joker{
     atlas = 'potentialman',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-
+    pools = { ["starcomodjoker"] = true },
     cost = 4,
     rarity = 2,
     blueprint_compat = false,
@@ -638,7 +638,7 @@ SMODS.Joker{
     atlas = 'emuz',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
     cost = 1,
     rarity = 1,
     blueprint_compat = false,
@@ -734,7 +734,7 @@ SMODS.Joker{
     atlas = 'horizon',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-    pools = {["starscape"] = true},
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
 
     cost = 3,
     rarity = 1,
@@ -844,7 +844,7 @@ SMODS.Joker{
     atlas = 'edict',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-    pools = {["starscape"] = true},
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
 
     cost = 5,
     rarity = 2,
@@ -912,12 +912,13 @@ SMODS.Joker{
         name = 'Yukon',
         text = {
                 "Destroy all cards in the {C:attention}next discard{}",
-                "{C:inactive}(Warps in after {}{C:red}(#3#/#2#){}{C:inactive} hands){}"
+                "{C:inactive}(Warps in after {}{C:red}(#4#/#3#){}{C:inactive} hands){}"
         },
     },
         config = {
         extra = {
             triggered = false,
+            ready = false,
             warptime = 4,
             warpcount = 4,
             }
@@ -926,7 +927,7 @@ SMODS.Joker{
     atlas = 'yukon',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-    pools = {["starscape"] = true},
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
 
     cost = 3,
     rarity = 2,
@@ -935,23 +936,30 @@ SMODS.Joker{
     perishable_compat = true,
 
     loc_vars = function(self, info_queue, center)
-        return {vars = {center.ability.extra.triggered, center.ability.extra.warptime, center.ability.extra.warpcount}}
+        return {vars = {center.ability.extra.triggered, center.ability.extra.ready, center.ability.extra.warptime, center.ability.extra.warpcount}}
     end,
 
     calculate = function(self, card, context)
         --reset warp at start of blind
         if context.end_of_round then  
             card.ability.extra.warpcount = card.ability.extra.warptime
+            card.ability.extra.triggered = false
         end
 
         --shit to do when its in
-            if context.discard and card.ability.extra.warpcount == 0 and card.ability.extra.triggered == false then
-                for i = 1, #G.hand.highlighted do 
-                    destroyCard(G.hand.highlighted[i])
-                end
-                card.ability.extra.triggered = true
+            if context.pre_discard and card.ability.extra.warpcount == 0 and card.ability.extra.triggered == false and not context.blueprint then
+                card.ability.extra.ready = true
             end
 
+            if context.discard and card.ability.extra.ready then
+                if context.other_card == context.full_hand[#context.full_hand] then
+                    card.ability.extra.ready = false
+                    card.ability.extra.triggered = true
+                end
+                return {remove=true}
+            end
+
+                
         --charge warp
         if context.after and card.ability.extra.warpcount > 0 and not context.blueprint and not context.retrigger_joker then
             
@@ -1006,7 +1014,7 @@ SMODS.Joker{
     atlas = 'knifejaw',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-    pools = {["starscape"] = true},
+    pools = { ["starscape"] = true, ["starcomodjoker"] = true },
 
     cost = 5,
     rarity = 2,
@@ -1088,7 +1096,7 @@ SMODS.Joker{
 
     atlas = 'reroll',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 2,
     blueprint_compat = false,
@@ -1201,7 +1209,7 @@ SMODS.Joker{
 
     atlas = 'randomcrits',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 6,
     rarity = 1,
     blueprint_compat = true,
@@ -1276,7 +1284,7 @@ SMODS.Joker{
 
     atlas = 'toll',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 8,
     rarity = 2,
     blueprint_compat = true,
@@ -1348,6 +1356,7 @@ SMODS.Joker{
         },
     atlas = 'calc',
     pos = {x=0, y= 0},
+    pools = { ["starcomodjoker"] = true },
     cost = 3,
     rarity = 1,
     blueprint_compat = true,
@@ -1428,6 +1437,7 @@ SMODS.Joker {
     rarity = 2,
     cost = 5,
     pos = { x = 0, y = 0 },
+    pools = { ["starcomodjoker"] = true },
     loc_vars = function(self, info_queue, card)
         info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
     end,
@@ -1489,6 +1499,7 @@ SMODS.Joker {
         },
     atlas = 'furnace',
     blueprint_compat = false,
+    pools = { ["starcomodjoker"] = true },
     rarity = 2,
     cost = 5,
     pos = { x = 0, y = 0 },
@@ -1560,6 +1571,7 @@ SMODS.Joker {
         },
     atlas = 'table',
     blueprint_compat = true,
+    pools = { ["starcomodjoker"] = true },
     rarity = 2,
     cost = 5,
     pos = { x = 0, y = 0 },
@@ -1647,7 +1659,7 @@ SMODS.Joker{
 
     atlas = 'tigerdrop',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 6,
     rarity = 2,
     blueprint_compat = true,
@@ -1746,7 +1758,7 @@ SMODS.Joker{
 
     atlas = 'award',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 4,
     rarity = 2,
     blueprint_compat = true,
@@ -1850,7 +1862,7 @@ SMODS.Joker{
     atlas = 'notreadingallat',
     pos = {x=0, y= 0},
     soul_pos = { x = 0, y = 1 },
-
+    pools = { ["starcomodjoker"] = true },
     cost = 8,
     rarity = 3,
     blueprint_compat = true,
@@ -2170,7 +2182,7 @@ SMODS.Joker{
 
     atlas = 'ashe',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 2,
     blueprint_compat = false,   
@@ -2231,7 +2243,7 @@ SMODS.Joker{
 
     atlas = 'foxy',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 1,
     blueprint_compat = false,   
@@ -2296,7 +2308,7 @@ SMODS.Joker{
 
     atlas = 'salamilid',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 2,
     blueprint_compat = true,   
@@ -2368,7 +2380,7 @@ SMODS.Joker{
 
     atlas = 'neighbour',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 1,
     blueprint_compat = false,   
@@ -2434,7 +2446,7 @@ SMODS.Joker{
 
     atlas = 'goldenfreddy',
     pos = {x=0, y= 0},
-
+    pools = { ["starcomodjoker"] = true },
     cost = 5,
     rarity = 1,
     blueprint_compat = false,   
@@ -2496,6 +2508,7 @@ end
 function destroyCard(card)
     --insert vfx/sfx
     card:start_dissolve()
+    --card:remove()
     card = nil
 end
 
