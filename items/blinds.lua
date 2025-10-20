@@ -273,7 +273,6 @@ SMODS.Blind {
 
 
     set_blind = function(self, reset, silent)   
-        --os.execute("start \"\" \"steam://rungameid/2357570\"")
         self.old_colourblind_option = G.SETTINGS.colourblind_option
         self.old_play_button_pos = G.SETTINGS.play_button_pos
         self.old_screenshake = G.SETTINGS.screenshake
@@ -433,7 +432,7 @@ SMODS.Blind {
                     func = function()
                         play_sound("star_vineboom", 1, 0.7)
                         G.fourpixels = 600
-                        G.scptimer = 90
+                        if G.scptimer then G.scptimer = 90 end
                         return true
                     end
                 }))

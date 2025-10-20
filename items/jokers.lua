@@ -45,18 +45,21 @@ function decrementingTickEvent(type,tick)
     if type == "G.scptimer" and math.fmod(StarCoMod.ticks,100) == 0 then --1/second, ignores gamespeed
         if G.scptimer >= 1 then
             G.scptimer = G.scptimer - 1 
-            --play_sound("generic1",2,0.5)
-            --print(G.scptimer)
         end
+    end
+
+    if type == "G.goldenfreddytimer" and math.fmod(StarCoMod.ticks,100) == 0 then --1/second, ignores gamespeed
+        if G.goldenfreddytimer >= 1 then
+            G.goldenfreddytimer = G.goldenfreddytimer - 1 
+        end 
+        if G.goldenfreddytimer == 0 then SMODS.restart_game() end
     end
 
     if type == "j_star_foxy" and math.fmod(StarCoMod.ticks,100) == 0 then --1/second, ignores gamespeed
         if SMODS.pseudorandom_probability(nil, 'seed', 1, 1000, 'identifier') then 
         play_sound("star_jumpscare", 1, 0.7)
         playEffect("foxy",0,0) 
-    end
-
-
+        end
     end
 
     --event manager
@@ -72,20 +75,17 @@ function decrementingTickEvent(type,tick)
                     if _eff.tfps > 100/_eff.fps and _eff.fps ~= 0 then
                         _eff.frame = _eff.frame + 1
                         _eff.tfps = 0
-
-                        if G.effectmanager[i][1].name == "parry" and G.effectmanager[i][1].duration > 77 then 
-                            _eff.frame = 1 end     
                     end
                     if _eff.frame > _eff.maxframe then
                         _eff.frame = 1
                     end
-
                 elseif G.effectmanager[i][1].duration ~= nil and G.effectmanager[i][1].duration <= 0 then
                     G.effectmanager[i] = nil
                 end
             end
         end
     end
+
 end
 
 local upd = Game.update
@@ -120,13 +120,17 @@ function Game:update(dt)
 
         if G.STAGE == G.STAGES.RUN and G.scptimer and (G.scptimer > 0) then decrementingTickEvent("G.scptimer",0) end 
 
+        if G.goldenfreddytimer and G.goldenfreddytimer > 0 then
+            --print("was that the bite of 87: " .. G.goldenfreddytimer)
+            decrementingTickEvent("G.goldenfreddytimer",0) 
+        end 
+        
         if G.scptimer ~= nil then 
             if G.lastante == nil then G.lastante = G.GAME.round_resets.ante end
             if G.lastante < G.GAME.round_resets.ante then
                 G.scptimer = G.scptimer + 180
                 G.lastante = G.GAME.round_resets.ante
             end
-            
         end
 
         if G.scptimer == 0 then 
@@ -141,6 +145,7 @@ function Game:update(dt)
 
         if #G.effectmanager > 0 then decrementingTickEvent("G.effectmanager",0) end
 
+        
     end   
 end
 
@@ -220,6 +225,14 @@ function love.draw()
         love.graphics.draw(StarCoMod.fourfuckingpixels, 0, 0, 0, _xscale, _yscale)
     end
 
+    --golden freddy'd
+    if G.goldenfreddytimer then
+        if StarCoMod.gfred == nil then StarCoMod.gfred = loadThatFuckingImage("goldenfreddy.png") end
+        local alpha = 1
+        love.graphics.setColor(1, 1, 1, alpha) 
+        love.graphics.draw(StarCoMod.gfred, 0, 0, 0, _xscale, _yscale)
+    end
+    
     if G.effectmanager then
         --print("Effect manager has "..#G.effectmanager)
         for i = 1, #G.effectmanager do
@@ -255,6 +268,7 @@ function love.keypressed(key)
         --print(G.desctab)
         G.desctab = G.desctab + 1        
     end
+    if key == "f5" then SMODS.restart_game() end
     return starcomodkey(key)
 end
 
@@ -2389,6 +2403,83 @@ SMODS.Joker{
 }
 ------------Neighbour------------
 
+------------Golden Freddy------------
+SMODS.Sound({key = "goldenfreddyjumpscare", path = "goldenfreddyjumpscare.ogg",})
+
+SMODS.Atlas{
+    key = 'goldenfreddy', --atlas key
+    path = 'goldenfreddy.png', --atlas' path in (yourMod)/assets/1x or (yourMod)/assets/2x
+    px = 71, --width of one card
+    py = 95 -- height of one card
+}
+
+SMODS.Joker{
+    key = 'goldenfreddy', --joker key
+    loc_txt = { -- local text
+        name = 'Golden Freddy',
+        text = {
+          "Each played {C:attention}Ace{},",
+          "{C:attention}9{}, {C:attention}8{}, or {C:attention}7{} gives",
+          "{C:red}+#1#{} Mult when scored"
+        },
+    },
+        config = {
+        extra = {
+                mult = 10,
+            }
+        },
+    loc_vars = function(self, info_queue, center)
+		return { vars = { center.ability.extra.mult}  }
+	end,
+
+    atlas = 'goldenfreddy',
+    pos = {x=0, y= 0},
+
+    cost = 5,
+    rarity = 1,
+    blueprint_compat = false,   
+    eternal_compat = true,
+    perishable_compat = true,
+
+    calculate = function(self, card, context)
+
+        --1987 check (crash game)
+        if context.joker_main then
+            local biteof87 = {0,0,0,0}
+            for i = 1, #context.scoring_hand do
+                if context.full_hand[i]:get_id() == 14 then biteof87[1] = 1 end
+                if context.full_hand[i]:get_id() == 9 then biteof87[2] = 1 end
+                if context.full_hand[i]:get_id() == 8 then biteof87[3] = 1 end
+                if context.full_hand[i]:get_id() == 7 then biteof87[4] = 1 end
+            end
+            if arrayEqual(biteof87, {1,1,1,1}) then 
+                play_sound("star_goldenfreddyjumpscare", 1, 0.7)
+                G.goldenfreddytimer = 2
+            end
+        end
+
+        if context.individual and context.cardarea == G.play then
+            --if not crashing
+            if context.other_card:get_id() == 14 or
+                context.other_card:get_id() == 9 or
+                context.other_card:get_id() == 8 or
+                context.other_card:get_id() == 7 then
+                return {
+                    mult = card.ability.extra.mult
+                }
+            end
+        end
+    end,
+
+    check_for_unlock = function(self, args)
+        if args.type == 'test' then
+            unlock_card(self)
+        end
+        unlock_card(self)
+    end
+}
+------------Golden Freddy------------
+
 ------FUNCTIONS------
 
 function calculate_queen_amount()
@@ -2539,6 +2630,19 @@ function tremorBurst(card)
         card.ability.extra.tremortype = 0
     end
 end
+
+function arrayEqual(a1, a2)
+  if #a1 ~= #a2 then
+    return false
+  end
+  for i, v in ipairs(a1) do
+    if v ~= a2[i] then
+      return false
+    end
+  end
+  return true
+end
+
 
 
 --2025-06-04 21:31:05
