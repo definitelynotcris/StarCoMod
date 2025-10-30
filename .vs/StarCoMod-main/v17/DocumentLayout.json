@@ -3,20 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\meta.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DefinitelyNotCris@StarCoMod\\meta.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\description.md||{8B382828-6202-11D1-8870-0000F87579D2}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DefinitelyNotCris@StarCoMod\\description.md||{8B382828-6202-11D1-8870-0000F87579D2}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\jokers.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:items\\jokers.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\blinds.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:items\\blinds.lua||{3B902123-F8A7-4915-9F01-361F908088D0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\description.md||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:DefinitelyNotCris@StarCoMod\\description.md||{8B382828-6202-11D1-8870-0000F87579D2}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\main.lua||{3B902123-F8A7-4915-9F01-361F908088D0}",
@@ -30,17 +26,17 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 1,
               "Title": "blinds.lua",
               "DocumentMoniker": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\blinds.lua",
               "RelativeDocumentMoniker": "items\\blinds.lua",
               "ToolTip": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\blinds.lua",
               "RelativeToolTip": "items\\blinds.lua",
-              "ViewState": "AgIAAF8BAAAAAAAAAAAMwHABAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAF8BAAAAAAAAAAAMwGoBAAAcAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-08-15T14:48:11.215Z",
               "IsPinned": true,
@@ -48,13 +44,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 0,
               "Title": "jokers.lua",
               "DocumentMoniker": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\jokers.lua",
               "RelativeDocumentMoniker": "items\\jokers.lua",
               "ToolTip": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\items\\jokers.lua",
               "RelativeToolTip": "items\\jokers.lua",
-              "ViewState": "AgIAAF0EAAAAAAAAAAAqwGoEAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAF0EAAAAAAAAAAAqwGYEAAALAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-06-15T16:49:15.303Z",
               "IsPinned": true,
@@ -62,7 +58,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "main.lua",
               "DocumentMoniker": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\main.lua",
               "RelativeDocumentMoniker": "main.lua",
@@ -71,25 +67,11 @@
               "ViewState": "AgIAAAYAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
               "WhenOpened": "2025-06-04T18:54:49.21Z",
-              "IsPinned": true,
-              "EditorCaption": ""
+              "IsPinned": true
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "meta.json",
-              "DocumentMoniker": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\meta.json",
-              "RelativeDocumentMoniker": "DefinitelyNotCris@StarCoMod\\meta.json",
-              "ToolTip": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\meta.json",
-              "RelativeToolTip": "DefinitelyNotCris@StarCoMod\\meta.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-10-12T03:35:25.67Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "description.md",
               "DocumentMoniker": "C:\\Users\\crisn\\AppData\\Roaming\\Balatro\\Mods\\StarCoMod-main\\DefinitelyNotCris@StarCoMod\\description.md",
               "RelativeDocumentMoniker": "DefinitelyNotCris@StarCoMod\\description.md",
@@ -97,8 +79,7 @@
               "RelativeToolTip": "DefinitelyNotCris@StarCoMod\\description.md",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAA5AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
-              "WhenOpened": "2025-10-12T03:35:06.374Z",
-              "EditorCaption": ""
+              "WhenOpened": "2025-10-12T03:35:06.374Z"
             }
           ]
         }

@@ -1,5 +1,10 @@
 return {
     descriptions = {
+        Misc = {
+            labels = {
+                star_void = "Void",
+            }
+        },
         Joker = {
             j_star_notreadingallat_0 = {
                 name = 'Not Reading Allat',

@@ -215,7 +215,7 @@ SMODS.Blind {
             'every played hand',
         }
     },
-    boss = {  min = 1 },
+    boss = {  min = 2 },
     boss_colour = HEX('d383f3'),
 
   press_play = function(self)
@@ -374,6 +374,7 @@ SMODS.Blind {
     name = "boss_onepiece",
     key = "boss_onepiece",
     atlas = "starcoblinds",
+    mult = 2,   
     pos = { y = 5 },
     dollars = 10,
     loc_txt = {

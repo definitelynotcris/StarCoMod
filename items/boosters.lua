@@ -12,18 +12,16 @@ SMODS.Sound({
     pitch = 1,
     volume = 0.6,
     select_music_track = function()
-        if G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
-            if G.pack_cards
-                and G.pack_cards.cards
-                and G.pack_cards.cards[1]
-                and G.pack_cards.cards[1].config
-                and G.pack_cards.cards[1].config.center
-                and G.pack_cards.cards[1].config.center.mod
-                and G.pack_cards.cards[1].config.center.mod.id 
-                and G.pack_cards.cards[1].config.center.mod.id == "StarCoMod" then
-		        return true 
-            end
-        end
+        return G.booster_pack and not G.booster_pack.REMOVED and SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == 'star_togifpack' and 100 or nil
+	end,
+})
+SMODS.Sound({
+    key = "music_starscapespaceambience", 
+    path = "music_starscapespaceambience.ogg",
+    pitch = 1,
+    volume = 0.6,
+    select_music_track = function()
+        return G.booster_pack and not G.booster_pack.REMOVED and SMODS.OPENED_BOOSTER and SMODS.OPENED_BOOSTER.config.center.kind == 'star_scapepack' and 100 or nil
 	end,
 })
 
@@ -38,7 +36,7 @@ SMODS.Booster{
         name = 'Togif Pack',
         text = { "Pick {C:attention}#1#{} card out",
                 "{C:attention}#2#{} StarCoMod jokers", },
-        group_name = "lolmao",
+        group_name = "xd",
     },
     
     draw_hand = false,
@@ -53,9 +51,9 @@ SMODS.Booster{
 
     weight = 1,
     cost = 5,
-    kind = "StarCoModPack",
+    kind = "star_togifpack",
     ease_background_colour = function(self)
-        ease_background_colour({ new_colour = HEX("473671")})
+        ease_background_colour({ new_colour = HEX("134f4d")})
     end,
     create_card = function(self, card, i)
         return SMODS.create_card({
@@ -71,7 +69,7 @@ SMODS.Booster{
     in_pool = function() return true end
 }
 
--- togif pack
+-- starscape pack
 SMODS.Booster{
     key = 'booster_crate',
     group_key = "k_star_booster_group",
@@ -95,9 +93,9 @@ SMODS.Booster{
         return { vars = { card.ability.choose, card.ability.extra } }
     end,
 
-    weight = 0.6,
+    weight = 0.4,
     cost = 3,
-    kind = "StarCoModPack",
+    kind = "star_scapepack",
     
     ease_background_colour = function(self)
         ease_background_colour({ new_colour = HEX("000000")})
@@ -115,3 +113,4 @@ SMODS.Booster{
 
     in_pool = function() return true end
 }
+

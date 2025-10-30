@@ -17,6 +17,9 @@ function getdate()
 end
 getdate()
 
+
+
+
 function playEffect(effect,posx,posy)
     if effect == "foxy" then
         --play_sound("star_jumpscare")
@@ -37,7 +40,6 @@ function playEffect(effect,posx,posy)
             }end
     table.insert(G.effectmanager,{neweffect})
 end
-
 
 
 G.desctab = 0
@@ -101,6 +103,8 @@ function Game:update(dt)
     while StarCoMod.dtcounter >= 0.010 do
         StarCoMod.ticks = StarCoMod.ticks + 1
         StarCoMod.dtcounter = StarCoMod.dtcounter - 0.010
+
+
 
         if G.GAME.blind and not G.GAME.blind.disabled and G.GAME.blind.in_blind and G.GAME.blind.name == 'boss_onepiece' then
             G.SETTINGS.GAMESPEED = 0.5
@@ -359,6 +363,7 @@ SMODS.Joker{
 	end,
 
     calculate = function(self,card,context)
+    if context.card_added then print("eeeee im santa") end
         if context.cardarea == G.jokers and context.joker_main then
             if calculate_queen_amount() >= 2 then
                 delay(0.15)
