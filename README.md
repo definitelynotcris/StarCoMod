@@ -1,7 +1,8 @@
-#StarCoMod
+# StarCoMod
 
 le funny balatro mod
-#THIS MOD ADDS:
+
+# THIS MOD ADDS:
 
 -25 new Jokers
 
