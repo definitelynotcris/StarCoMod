@@ -47,7 +47,7 @@ function decrementingTickEvent(type,tick)
     if type == "G.GAME.scptimer" and math.fmod(StarCoMod.ticks,100) == 0 then --1/second, ignores gamespeed
         if G.GAME.scptimer >= 1 then
             G.GAME.scptimer = G.GAME.scptimer - 1 
-            print(G.GAME.scptimer)
+            --print(G.GAME.scptimer)
         end
     end
 
