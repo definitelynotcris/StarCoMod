@@ -274,8 +274,7 @@ function love.keypressed(key)
         G.desctab = G.desctab + 1  
         selected:stop_hover()
         selected:hover()
-        --print(G.desctab)
-        G.desctab = G.desctab + 1        
+        --print(G.desctab)  
     end
     if key == "f5" then SMODS.restart_game() end
     return starcomodkey(key)
