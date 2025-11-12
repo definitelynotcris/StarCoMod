@@ -270,15 +270,12 @@ end
 local starcomodkey = love.keypressed
 function love.keypressed(key)
     if key == "c" then
-<<<<<<< HEAD
         local selected = G and G.CONTROLLER and (G.CONTROLLER.focused.target or G.CONTROLLER.hovering.target)
         G.desctab = G.desctab + 1  
         selected:stop_hover()
         selected:hover()
-=======
         --print(G.desctab)
         G.desctab = G.desctab + 1        
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
     end
     if key == "f5" then SMODS.restart_game() end
     return starcomodkey(key)
@@ -701,10 +698,7 @@ SMODS.Joker{
             return{
                 message = "No rent!",
                 card:start_dissolve(),
-<<<<<<< HEAD
 
-=======
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
                 card = nil
                 }
             end
@@ -742,11 +736,8 @@ SMODS.Joker{
     },
         config = {
         extra = {
-<<<<<<< HEAD
             xmult = 2,
-=======
             xmult = 1.5,
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
             warptime = 1,
             warpcount = 1,
             }
@@ -1927,11 +1918,8 @@ SMODS.Joker{
         end
 
         --pick skills here
-<<<<<<< HEAD
 
 
-=======
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
         if context.individual and context.cardarea == G.play and card.ability.extra.triggered == false then
             card.ability.extra.triggered = true
             card.ability.extra.skill = (math.random(1, 3))
@@ -2518,7 +2506,6 @@ SMODS.Joker{
 }
 ------------Golden Freddy------------
 
-<<<<<<< HEAD
 ------------D20------------
 
 SMODS.Atlas{
@@ -2948,8 +2935,6 @@ SMODS.Joker{
 }
 ------------D20------------
 
-=======
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
 ------FUNCTIONS------
 
 function calculate_queen_amount()
@@ -3116,10 +3101,7 @@ end
 
 
 
-<<<<<<< HEAD
 
-=======
->>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
 --2025-06-04 21:31:05
 
 
