@@ -9,6 +9,10 @@
     "priority": 0,
     "badge_colour": "c804dc",
     "badge_text_colour": "FFFFFF",
+<<<<<<< HEAD
     "version": "1.05",
+=======
+    "version": "1.04",
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
     "dependencies": []
 }

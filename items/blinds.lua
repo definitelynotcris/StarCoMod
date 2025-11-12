@@ -423,7 +423,11 @@ SMODS.Blind {
     mult = 2,
 
     calculate = function(self,card,context)
+<<<<<<< HEAD
         if context.final_scoring_step and not G.GAME.blind.disabled then
+=======
+        if context.final_scoring_step then
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
         --print("e")
             if G.GAME.chips + (hand_chips * mult) < G.GAME.blind.chips then
             G.E_MANAGER:add_event(Event({

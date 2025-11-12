@@ -52,10 +52,17 @@ SMODS.current_mod.calculate = function(self,context)
     if not G.GAME.star_corrupted_cards then 
         G.GAME.star_corrupted_cards = {} 
     end
+<<<<<<< HEAD
     if G.GAME.starcoluck == nil then G.GAME.starcoluck = 0 end 
     if context.mod_probability then
         return {
             numerator = context.numerator + G.GAME.starcoluck
+=======
+    if G.GAME.voidextraodds == nil then G.GAME.voidextraodds = 1 end 
+    if context.mod_probability then
+        return {
+            numerator = context.numerator * G.GAME.voidextraodds
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
         }
     end
 end
@@ -162,8 +169,12 @@ SMODS.Consumable({
         name = "Void Magician",
         text={
         "Permanently increases",
+<<<<<<< HEAD
         "{C:green}luck{} by {C:attention}0.2{}",
         "{C:inactive}(ex: {}{C:green}2 in 4{}{C:inactive} -> {}{C:green}2.2 in 4{}{C:inactive})",
+=======
+        "{C:green}luck{} by {C:attention}20%{}",
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
         "{C:red,E:2}Corrupts all Magicians"
         },
     },
@@ -186,7 +197,11 @@ SMODS.Consumable({
             func = function()
                     play_sound('timpani')
                     card:juice_up(0.3, 0.5)
+<<<<<<< HEAD
                     G.GAME.starcoluck = G.GAME.starcoluck + 0.2
+=======
+                    G.GAME.voidextraodds = G.GAME.voidextraodds + 0.2
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
                     if not G.GAME.star_corrupted_cards then
 			            G.GAME.star_corrupted_cards = {}
 		            end
@@ -1890,6 +1905,7 @@ SMODS.Consumable({
             trigger = 'after',
             delay = 0.4,
             func = function()
+<<<<<<< HEAD
                 play_sound('timpani')
                 card:juice_up(0.3, 0.5)
                     local tag_pool = get_current_pool('Tag')
@@ -1905,6 +1921,23 @@ SMODS.Consumable({
 		        end
                 G.GAME.star_corrupted_cards["Judgement"] = true 
             return true
+=======
+                    play_sound('timpani')
+                    card:juice_up(0.3, 0.5)
+                        local tag_pool = get_current_pool('Tag')
+                            local selected_tag = pseudorandom_element(tag_pool, pseudoseed('star_voidjudgement'))
+                            local it = 1
+                            while selected_tag == 'UNAVAILABLE' do
+                                it = it + 1
+                                selected_tag = pseudorandom_element(tag_pool, pseudoseed('star_voidjudgement'..it))
+                            end
+                    add_tag(Tag(selected_tag, false, 'Small'))
+                    if not G.GAME.star_corrupted_cards then
+			            G.GAME.star_corrupted_cards = {}
+		            end
+                    G.GAME.star_corrupted_cards["Judgement"] = true 
+                return true
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
             end
          }))
          delay(0.6)
@@ -2084,9 +2117,14 @@ function pickrandomfromhand(num)
         hand[i] = v
     end
     for i = 1, math.min(num, #hand) do
+<<<<<<< HEAD
         chosen = math.random(#hand)
         table.insert(chosencards, hand[chosen])
         table.remove(hand, chosen)
+=======
+        chosen = pseudorandom_element(hand, pseudoseed('pickrandom'))
+        chosencards[i] = chosen
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
     end
     return chosencards --returns cards in list
 end

@@ -151,6 +151,7 @@ return {
                     "Deal +(percentage of Hands used)% damage (max 50%)"
                 },
             },
+<<<<<<< HEAD
             j_star_notreadingallat_0 = {
                 name = 'Not Reading Allat',
                 text = {
@@ -220,6 +221,8 @@ return {
                     "or +1 luck. Then, turn this Joker into a random held Joker", 
                 },
             },
+=======
+>>>>>>> cd697c0846dc2ba886e326371e10a2362e701590
           
         }
     }
