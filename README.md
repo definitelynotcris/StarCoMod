@@ -4,7 +4,7 @@ le funny balatro mod
 
 # THIS MOD ADDS:
 
--25 new Jokers
+-26 new Jokers
 
 -8 new Blinds
 
